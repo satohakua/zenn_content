@@ -4,10 +4,12 @@ Substance 3D Designer で理屈を持ってテクスチャ作成したい方向�
 中級者~上級者を対象としています。
 この内容を通して、「Houdini Copernicus」でのテクスチャ作成やマテリアル
 "
-topics: []
+topics: [Substance3DDesigner]
 published: false
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
 chapters:
   - example1
   - example2
+
+toc_depth: 3
