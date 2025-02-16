@@ -25,7 +25,7 @@ title: "Anisotropic Noise"
 ![](/images/591111c92d36ea/example1/2025-02-15_08h18_20.png)
 *［Per Pixel Function］*
 
-### 要素ごとに解説
+## 要素ごとに解説
 
 
 #### Y軸のラインのランダム

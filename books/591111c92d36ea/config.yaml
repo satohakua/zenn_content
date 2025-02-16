@@ -1,4 +1,4 @@
-title: "Substance 3D Designer ノードの中身解読"
+title: "Substance 3D Designer ノードの中身を解読"
 summary: "
 Substance 3D Designer で理屈を持ってテクスチャ作成したい方向けの本です。
 中級者~上級者を対象としています。
@@ -12,4 +12,4 @@ chapters:
   - example1
   - example2
 
-toc_depth: 3
+toc_depth: 4
