@@ -1,8 +1,26 @@
 title: "Substance 3D Designer ノードの中身を解読"
 summary: "
 Substance 3D Designer で理屈を持ってテクスチャ作成したい方向けの本です。
+
+
 中級者~上級者を対象としています。
-この内容を通して、「Houdini Copernicus」でのテクスチャ作成やマテリアル
+
+
+
+本書では Substance 3D Designer のノードの中身を解読し、より深くプロシージャルな画像作成の知識を得ることを目的にしています。
+
+※私がノードの制作者ではないため「解説」ではなく「解読」
+
+
+
+標準ノードの中身には基礎的な知識が詰まっています。
+
+それは、「Substance 3D Designer」のみならず、以下にも役立ちます。
+
+
+・「Houdini Copernicus」でのテクスチャ作成
+
+・「ゲームエンジン」でのマテリアル作成
 "
 topics: [Substance3DDesigner]
 published: false
@@ -11,5 +29,6 @@ price: 0 # 有料の場合200〜5000
 chapters:
   - example1
   - example2
+  - example3
 
 toc_depth: 4
