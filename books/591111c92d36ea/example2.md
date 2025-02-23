@@ -11,20 +11,19 @@ title: "Anisotropic Noise"
 
 ## 処理の大枠
 ![](/images/591111c92d36ea/example1/2025-02-15_08h00_02.png)
-*Anisotropic Noise の中身*
+*『Anisotropic Noise』 の中身*
 
 以下のように処理がされているようです。
-1. Pixel Processor
-縞模様作成
-1. Directional Blur
-模様にブラーをかける
-1. Directional Blur
-模様にブラーをかける
+| No. | ノード名                | 説明                     |
+|----|------------------|---------------------|
+| 1  | Pixel Processor  | しま模様作成           |
+| 2  | Directional Blur | ブラーをかける |
+| 3  | Directional Blur | ブラーをかける |
+
 
 
 &nbsp;
-&nbsp;
-## Pixel Processor　
+## 『Pixel Processor』　
 ### 全体像
 ![](/images/591111c92d36ea/example1/2025-02-16_10h45_16.png)
 *［Parameters］*
@@ -143,4 +142,27 @@ Y 軸の階調ごとに X 座標のオフセットをかけています。
 
 
 &nbsp;
-## Directional Blur
+## 2つの『Directional Blur』
+### 結論
+なぜ2つも使用しているのか分かりませんでした。
+
+
+### 全体像
+『Directional Blur』は2つとも以下のようなプロパティです。
+![](/images/591111c92d36ea/example1/2025-02-23_18h15_06.png)
+
+
+### 「Intensity」
+２つともほとんど同じ処理です。
+また、1つ目の『Directional Blur』は未使用のノードも残されていました。
+![](/images/591111c92d36ea/example1/2025-02-23_22h39_20.png)
+
+![](/images/591111c92d36ea/example1/2025-02-23_22h40_36.png)
+
+### 「Angle」
+2つとも同じ処理です。
+処理としては、単純に［「Rotate」が有効のときに "90°" を返す］というものです。
+
+「Angle」は "0~360°" を "0~1" で表します。
+90 ÷ 360 = 0.25 であるため、"0.25" で "90°" を返していることになります。
+![](/images/591111c92d36ea/example1/2025-02-23_18h21_54.png =250x)
