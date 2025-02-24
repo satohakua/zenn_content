@@ -7,16 +7,16 @@ title: "Anisotropic Noise"
 [Adobe 公式サイト](https://helpx.adobe.com/substance-3d-designer/substance-compositing-graphs/nodes-reference-for-substance-compositing-graphs/node-library/texture-generators/noises/anisotropic-noise.html)
 
 ## 解析率
-60%
+50%
 
 ## 処理の大枠
 ![](/images/591111c92d36ea/example1/2025-02-15_08h00_02.png)
 *『Anisotropic Noise』 の中身*
 
-以下のように処理がされているようです。
+以下のように処理がされています。
 | No. | ノード名                | 説明                     |
 |----|------------------|---------------------|
-| 1  | Pixel Processor  | しま模様作成           |
+| 1  | Pixel Processor  | 模様作成           |
 | 2  | Directional Blur | ブラーをかける |
 | 3  | Directional Blur | ブラーをかける |
 
@@ -131,16 +131,25 @@ Y 軸とほとんど同じ処理です。異なる点は以下　のみです。
 
 ##### X 軸にランダムオフセット
 Y 軸の階調ごとに X 座標のオフセットをかけています。
-これがないと、以下のように直線的な見た目になります。
-![](/images/591111c92d36ea/example1/2025-02-23_16h46_03.png)
+![](/images/591111c92d36ea/example1/2025-02-23_16h46_03.gif)
 
 ##### 色をランダムにする
-書くブロックごとの色をランダム化しています。
+各ブロックごとの色をランダム化しています。
+『Float 2』の値に特別な意味はないと思います。
+
+![](/images/591111c92d36ea/example1/2025-02-24_11h57_03.png)
+
 これがないと、以下のように "X Amount" 分の色数しかない見た目になります。
 ![](/images/591111c92d36ea/example1/2025-02-23_16h47_41.png)
 
 
 
+&nbsp;
+### 「Rotate」
+単純に『Swizzle Float2』で "size" と "pos" の x, y を入れ替えているだけです。
+![](/images/591111c92d36ea/example1/Animation(2).gif)
+
+![](/images/591111c92d36ea/example1/2025-02-24_12h05_21.png)
 
 &nbsp;
 ## 2つの『Directional Blur』
