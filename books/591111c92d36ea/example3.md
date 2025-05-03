@@ -15,90 +15,49 @@ title: "Cells 4 ※執筆中"
 ![](/images/591111c92d36ea/example2/2025-03-02_16h09_44.png)
 *『Cells 4』 の中身*
 
-以下のように処理がされています。
-| No. | ノード名                | 説明                     |
-|----|------------------|---------------------|
-| 1  | FX-Map  | 模様作成           |
-| 1  | FX-Map  | 模様作成           |
-| 2  | Distance | aa |
-| 3  | Blend | どちらか片方だけ使用する（スイッチ） |
 
+上下で2通りの処理があり、『Blend』でその切替を行っています。
 
-&nbsp;
-## ２種類の『Distance』
-これらの違いは、「Pixel Ratio」のみです。
-![](/images/591111c92d36ea/example2/2025-03-02_16h25_48.png)
+## ２通りの処理
+長方形の場合に補正するか否かです。
+そして、パラメータの違いは『Distance』の「Pixel Ratio」のみです。
+![](/images/591111c92d36ea/example2/2025-05-03_08h13_53.png)
+
 
 
 &nbsp;
 ## 『Blend』の中身
-![](/images/591111c92d36ea/example2/2025-03-02_19h50_47.png)
-
-
 「Blending Mode」が "Switch" になっています。
-0 に近づくほど赤線が、1 に近づくほど青線が見えてきます。（lerp 処理）
+"0" に近づくほど Foreground が、"1" に近づくほど Background が見えてきます。
+（lerp 処理）
+![](/images/591111c92d36ea/example2/2025-03-02_19h50_47.png)
+*一般的なノードツールの "IF" や "Switch" と同じ*
+
 
 今回は「Non Square Expansion」の "True" or "False" で "0" or "1" が選択されています。
-よって、赤線と青線が片方ずつしか使用されません。
-![](/images/591111c92d36ea/example2/2025-03-02_19h59_39.png)
+よって、Foreground と Background が片方ずつしか使用されません。
+![](/images/591111c92d36ea/example2/Animation_aa.gif)
+
+
+&nbsp;
+## メイン処理
+以下が最小構成です。 
+![](/images/591111c92d36ea/example2/2025-05-03_11h17_30.png)
+
+ただ、複雑なパラメーターの入力が必要なければ『FX-Map』は1つでも動作します。
+わかりやすいため、まずはこの構成で解読します。
+![](/images/591111c92d36ea/example2/2025-05-03_11h41_39.png)
+
+
+
 
 &nbsp;
 ### 「FX-Map」の中身
-|  | 上               | 下                     |
+| ノード名 | パラメーター          | 中身                     |
 |----|------------------|---------------------|
-| 全体像 | ![](/images/591111c92d36ea/example2/2025-03-02_20-32-13-400.png)  | 左に同じ  |
-| Output Size  | ![](/images/591111c92d36ea/example2/2025-03-02_20-40-48-024.png)   | 左に同じ |
-| 2  | Distance | aa |
-| 3  | Blend | どちらか片方だけ使用する（スイッチ） |
+| FX-Map | ![](/images/591111c92d36ea/example2/2025-05-03_12h11_52.png)  | ![](/images/591111c92d36ea/example2/2025-05-03_11h48_06.png) |
+| Iterate | ![](/images/591111c92d36ea/example2/2025-05-03_11h51_01.png)  | ![](/images/591111c92d36ea/example2/2025-05-03_11h55_15.png) |
+| Switch  | ![](/images/591111c92d36ea/example2/2025-05-03_11h58_27.png) | ![](/images/591111c92d36ea/example2/2025-05-03_12h08_54.png) |
+| Quadrant | ![](/images/591111c92d36ea/example2/2025-05-03_12h11_52.png) | ![](/images/591111c92d36ea/example2/2025-05-03_12h17_41.png) ![](/images/591111c92d36ea/example2/2025-05-03_12h18_39.png)  |
 
 ### 全体像
-
-![](/images/591111c92d36ea/example2/2025-03-02_20h20_33.png)
-*［Parameters］*
-
-#### 上
-処理を並行するノードです。"変数の格納"と"出力処理"を別々で行う際に使われることが多いです。
-
-
-#### 上下の違い
-［Quadrant > Color / Luminounsity］
-![](/images/591111c92d36ea/example1/2025-02-16_12h28_55.png)
-
-
-&nbsp;
-#### ランダムシード
-X と Y で別々のランダムシードを設定しています。
-また、その値を変数に格納し「Per Pixel Function」で使用しています。
-![](/images/591111c92d36ea/example1/2025-02-16_15h53_09.png)
-
-
-
-
-&nbsp;
-## ２つの『Distance』
-これらの違いは、「Pixel Ratio」のみです。
-![](/images/591111c92d36ea/example2/2025-03-02_16h25_48.png)
-
-### 処理内容
-![](/images/591111c92d36ea/example2/2025-03-02_21h29_05.png)
-上のインプットで
-
-
-下のインプットで色付け
-
-
-以下でも同じ結果です。
-![](/images/591111c92d36ea/example2/2025-03-02_21h20_43.png)
-
-
-&nbsp;
-## 『Blend』の中身
-![](/images/591111c92d36ea/example2/2025-03-02_19h50_47.png)
-
-
-「Blending Mode」が "Switch" になっています。
-0 に近づくほど赤線が、1 に近づくほど青線が見えてきます。（lerp 処理）
-
-今回は「Non Square Expansion」の "True" or "False" で "0" or "1" が選択されています。
-よって、赤線と青線が片方ずつしか使用されません。
-![](/images/591111c92d36ea/example2/2025-03-02_19h59_39.png)
