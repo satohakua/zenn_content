@@ -53,7 +53,7 @@ title: "Cells 4 ※執筆中"
 
 このノードでは以下のような「つぶつぶ模様」が生成されています。
 『Distance』の
-![](/images/591111c92d36ea/example3/2025-05-04-09-21-18.png)
+
 
 &nbsp;
 ## FX-Map
@@ -69,3 +69,47 @@ title: "Cells 4 ※執筆中"
 
 
 ### Iterate
+
+### Switch
+
+
+
+
+## Quadrant
+1ピクセルの大きさの正方形を作る
+![](/images/591111c92d36ea/example3/2025-05-03_12h11_52.png) 
+
+### Color / Luminosity
+色をランダムに設定
+![](/images/591111c92d36ea/example3/2025-05-05-13-17-39.png)
+
+
+### Branch Offset
+![](/images/591111c92d36ea/example3/2025-05-05-15-17-22.png)
+
+&nbsp;
+『current_position』だけだと以下のようになります。
+![](/images/591111c92d36ea/example3/2025-05-05-13-20-23.png)
+
+&nbsp;
+#### disorder
+ポジションに方向と角度のランダムな値を入力しています。
+![](/images/591111c92d36ea/example3/2025-05-05-15-06-15.png)
+![](/images/591111c92d36ea/example3/2025-05-05-14-20-19.png)
+
+コメントで『-1 or 1 を返す』とありますが、"1" のみ返ってきます。
+![](/images/591111c92d36ea/example3/2025-05-05-14-48-16.png)
+
+よって、その処理を完全に省いても問題なく動作します。
+![](/images/591111c92d36ea/example3/2025-05-05-15-04-58.png)
+
+また、以下でコメントの動作を実現できます。
+![](/images/591111c92d36ea/example3/2025-05-05-14-52-19.png)
+
+
+### Pattern
+ ![](/images/591111c92d36ea/example3/2025-05-03_12h17_41.png)
+
+
+正方形の大きさを設定。
+解像度の最小値を
