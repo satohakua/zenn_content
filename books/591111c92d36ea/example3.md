@@ -1,5 +1,5 @@
 ---
-title: "Cells 4 ※執筆中"
+title: "Cells 4 "
 ---
 ![](/images/591111c92d36ea/example3/2025-02-23_23h46_01.png)
 
@@ -7,7 +7,7 @@ title: "Cells 4 ※執筆中"
 [Adobe 公式サイト](https://helpx.adobe.com/substance-3d-designer/substance-compositing-graphs/nodes-reference-for-substance-compositing-graphs/node-library/texture-generators/noises/cells-4.html)
 
 ## 解析率
-60%
+40%
 
 ## 処理の大枠
 ![](/images/591111c92d36ea/example3/2025-03-02_19h57_10.png)
@@ -45,34 +45,43 @@ title: "Cells 4 ※執筆中"
 
 ただ、複雑なパラメーター入力が必要なければ『FX-Map』は1つでも動作します。
 わかりやすいため、まずはこの構成で解読します。
+また、「Non Square Expansion」に関する処理も省きます。
 ![](/images/591111c92d36ea/example3/2025-05-03_11h41_39.png)
-
-
-
-### 全体像
-
-このノードでは以下のような「つぶつぶ模様」が生成されています。
-『Distance』の
 
 
 &nbsp;
 ## FX-Map
 このノードでは以下のような「つぶつぶ模様」が生成されています。
-
 ![](/images/591111c92d36ea/example3/image-1.png) 
-| ノード名 | パラメーター          | 中身                     |
-|----|------------------|---------------------|
-| FX-Map | ![](/images/591111c92d36ea/example3/2025-05-03_12h11_52.png)  | ![](/images/591111c92d36ea/example3/2025-05-03_11h48_06.png) |
-| Iterate | ![](/images/591111c92d36ea/example3/2025-05-03_11h51_01.png)  | ![](/images/591111c92d36ea/example3/2025-05-03_11h55_15.png) |
-| Switch  | ![](/images/591111c92d36ea/example3/2025-05-03_11h58_27.png) | ![](/images/591111c92d36ea/example3/2025-05-03_12h08_54.png) |
-| Quadrant | ![](/images/591111c92d36ea/example3/2025-05-03_12h11_52.png) | ![](/images/591111c92d36ea/example3/2025-05-03_12h17_41.png) ![](/images/591111c92d36ea/example3/2025-05-03_12h18_39.png)  |
+
+
+### Output Size
+「Output Size」自体の処理はしていません。
+『FX-Map』内で使用する変数の準備をしています。
+![](/images/591111c92d36ea/example3/2025-05-06-09-39-37.png)
+*「Output Size」 の中身*
+
+![](/images/591111c92d36ea/example3/2025-05-06-12-35-46.png)
+*『Non-Square Output Size』 の中身*
 
 
 ### Iterate
+![](/images/591111c92d36ea/example3/2025-05-03_11h51_01.png)  
+*『Iterate』 のパラメーター*
+![](/images/591111c92d36ea/example3/2025-05-06-11-48-10.png)
+*「Iterations」 の中身*
+
+常に奇数回数で実行されるようになっています。
+これは、今回の処理が "Scale = 4" のときが "Scale = 5" の端が半分見える状態で拡大しているからです。
+| Scale = 3 | Scale = 4      | Scale = 5      |
+|----|------------------|---------------------|
+| ![](/images/591111c92d36ea/example3/2025-05-06-11-35-25.png) |![](/images/591111c92d36ea/example3/2025-05-06-11-34-41.png) | ![](/images/591111c92d36ea/example3/2025-05-06-11-35-12.png) |
+
+
 
 ### Switch
-
-
+![](/images/591111c92d36ea/example3/2025-05-03_11h58_27.png)
+*『Switch』 のパラメーター*
 
 
 ## Quadrant
@@ -88,28 +97,45 @@ title: "Cells 4 ※執筆中"
 ![](/images/591111c92d36ea/example3/2025-05-05-15-17-22.png)
 
 &nbsp;
-『current_position』だけだと以下のようになります。
+『current_position』だけだと以下のように整列します。
+ここに『disorder』でランダムなオフセット値を加算します。
 ![](/images/591111c92d36ea/example3/2025-05-05-13-20-23.png)
 
 &nbsp;
 #### disorder
-ポジションに方向と角度のランダムな値を入力しています。
 ![](/images/591111c92d36ea/example3/2025-05-05-15-06-15.png)
+*ノード郡*
+&nbsp;
+『Cartesian』に "移動量" と "移動方向" を入力し、ランダムなオフセット値を算出しています。
 ![](/images/591111c92d36ea/example3/2025-05-05-14-20-19.png)
 
+&nbsp;
 コメントで『-1 or 1 を返す』とありますが、"1" のみ返ってきます。
+よって、その処理を完全に省いても問題なく動作します。
 ![](/images/591111c92d36ea/example3/2025-05-05-14-48-16.png)
 
-よって、その処理を完全に省いても問題なく動作します。
-![](/images/591111c92d36ea/example3/2025-05-05-15-04-58.png)
-
+&nbsp;
 また、以下でコメントの動作を実現できます。
 ![](/images/591111c92d36ea/example3/2025-05-05-14-52-19.png)
 
 
-### Pattern
+### Pattern Size
  ![](/images/591111c92d36ea/example3/2025-05-03_12h17_41.png)
 
 
 正方形の大きさを設定。
-解像度の最小値を
+1ピクセル程度の小さい正方形にするために［『scale』÷ 解像度］をしていると思われます。
+
+
+
+## Distance
+入力されたピクセルを円形に拡大しています。
+拡大幅を大きくすると『Cells 4』のアウトプットが完成します。
+![](/images/591111c92d36ea/example3/Animation_00.gif)
+
+&nbsp;
+「Mask Input」が名前の通りマスク情報。
+「Source Input」がカラー情報です。
+"白~黒" の粒粒の "色情報" と "それらのマスク" が入力されているため、明度が
+様々な領域ができています。
+![](/images/591111c92d36ea/example3/2025-05-06-12-49-27.png)
